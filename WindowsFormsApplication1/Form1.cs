@@ -45,7 +45,8 @@ namespace WindowsFormsApplication1
             username = txtUsername.Text.Trim();
             password = txtPwd.Text.Trim();
             hosturl = txtHostUrl.Text.Trim();
-
+            factory.UserName = username;
+            factory.Password = password;
 
             cbExchangeType.SelectedIndex = 0;
             cbDurable.SelectedIndex = 0;
