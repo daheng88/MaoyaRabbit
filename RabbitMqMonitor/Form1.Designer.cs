@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAddMessage = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSelectExchange = new System.Windows.Forms.TextBox();
@@ -115,6 +116,8 @@
             this.btnBindingsRefresh = new System.Windows.Forms.Button();
             this.lbBindings = new System.Windows.Forms.ListBox();
             this.label37 = new System.Windows.Forms.Label();
+            this.btnMontor = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -138,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(234, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 20);
@@ -318,7 +321,7 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(66, 21);
             this.txtPwd.TabIndex = 17;
-            this.txtPwd.Text = "guest";
+            this.txtPwd.Text = "123456";
             // 
             // txtUsername
             // 
@@ -326,7 +329,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(56, 21);
             this.txtUsername.TabIndex = 14;
-            this.txtUsername.Text = "guest";
+            this.txtUsername.Text = "roger";
             // 
             // label4
             // 
@@ -1044,11 +1047,28 @@
             this.label37.TabIndex = 21;
             this.label37.Text = "绑定关系";
             // 
+            // btnMontor
+            // 
+            this.btnMontor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMontor.Location = new System.Drawing.Point(796, 45);
+            this.btnMontor.Name = "btnMontor";
+            this.btnMontor.Size = new System.Drawing.Size(90, 23);
+            this.btnMontor.TabIndex = 47;
+            this.btnMontor.Text = "监控通道及消息";
+            this.btnMontor.UseVisualStyleBackColor = true;
+            this.btnMontor.Click += new System.EventHandler(this.btnMontor_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 803);
+            this.Controls.Add(this.btnMontor);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.panel4);
@@ -1167,6 +1187,8 @@
         private System.Windows.Forms.Button btnBindingsRefresh;
         private System.Windows.Forms.ListBox lbBindings;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button btnMontor;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -30,12 +30,20 @@ namespace WindowsFormsApplication1
         private QueueEntity queue;
         private BindingEntity binding;
 
+        private string connectionApi = string.Empty;
+        private string channelApi = string.Empty;
+
+        private string overviewApi = string.Empty;
+
         public Form1()
         {
             InitializeComponent();
             exchangesApi = hosturl + "/api/exchanges";
             queuesApi = hosturl + "/api/queues";
             bingdingsApi = hosturl + "/api/bindings";
+            connectionApi = hosturl + "/api/connections";
+            channelApi = hosturl + "/api/channels";
+            overviewApi = hosturl + "/api/overview";
             factory = new ConnectionFactory { HostName = M_HostName };
             InitRabbit();
         }
@@ -55,9 +63,9 @@ namespace WindowsFormsApplication1
             cbAutoDelete.SelectedIndex = 1;
             cbExchangeAutoDelete.SelectedIndex = 1;
 
-            ShowLbUserUserExchanges(exchangesApi);
-            ShowLbQueues(queuesApi);
-            ShowLbBindings(bingdingsApi);
+           // ShowLbUserUserExchanges(exchangesApi);
+           // ShowLbQueues(queuesApi);
+           // ShowLbBindings(bingdingsApi);
 
         }
 
@@ -644,6 +652,34 @@ Waiting for messages";
 ";
             }
             txtSysMessage.Text = txtSysMessage.Text + message;
+        }
+        int clickCount = 0;
+        private void btnMontor_Click(object sender, EventArgs e)
+        {
+            if (clickCount == 0)
+            {
+                this.timer1.Enabled = true;
+            }
+            else
+            {
+                this.timer1.Enabled = (clickCount % 2 == 1);
+                clickCount++;
+            }
+           
+        }
+        private async void MonitorData()
+        {
+            var jsonContent = await ShowApiResult(overviewApi);
+            // jsonContentTask.Wait();
+            RabbitMqMonitor.LogHelper.Info("数据：" + jsonContent);
+            RabbitMqMonitor.LogHelper.Info("------------------------------");
+        }
+
+ 
+        private  void timer1_Tick(object sender, EventArgs e)
+        {
+
+            MonitorData();
         }
 
     }
